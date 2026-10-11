@@ -187,9 +187,12 @@
     calendar: { en: 'Add to Calendar', ur: 'کیلنڈر میں شامل کریں', both: 'Add to Calendar • کیلنڈر' }
   };
 
-  var currentLang = localStorage.getItem('inv_lang') || 'both';
+  var currentLang = localStorage.getItem('inv_lang') || 'en';
 
   function applyLanguage(lang) {
+    if (lang !== 'en' && lang !== 'ur') {
+      lang = 'en';
+    }
     currentLang = lang;
     localStorage.setItem('inv_lang', lang);
 
@@ -250,9 +253,7 @@
       switcher.innerHTML =
         '<button type="button" class="lang-btn" data-lang="en">English</button>' +
         '<span class="lang-divider">|</span>' +
-        '<button type="button" class="lang-btn" data-lang="ur">اردو</button>' +
-        '<span class="lang-divider">|</span>' +
-        '<button type="button" class="lang-btn" data-lang="both">Both</button>';
+        '<button type="button" class="lang-btn" data-lang="ur">اردو</button>';
 
       document.body.appendChild(switcher);
 
